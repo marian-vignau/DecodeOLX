@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="utf-8"/>
+    <title>Informe Técnico/Pericial Nº: {{caseinfo.informe}}Informe - {{caseinfo.oficina}}</title>
+    <link rel="stylesheet" type="text/css" href="resource/myStyle.css">
+</head>
+<body>
+<div align="center">
+    <img src="resource\logo.png" />
+    <h1>{{caseinfo.oficina}}</h1>
+</div>
+<div align="center">
+    <table class="caseData">
+        <tr>
+            <th class="caseData">Informe Técnico/Pericial Nº:</th>
+            <th class="caseData">{{caseinfo.informe}}</th>
+        </tr>
+        <tr>
+            <th class="caseData">Causa:</th>
+            <th class="caseData">{{caseinfo.causa}}</th>
+        </tr>
+        <tr>
+            <th class="caseData">Expediente:</th>
+            <th class="caseData">{{caseinfo.expte}}</th>
+        </tr>
+        <tr>
+            <th class="caseData">Perito:</th>
+            <th class="caseData">{{caseinfo.perito}}</th>
+        </tr>
+    </table>
+</div>
+<div align="center">
+    <h2>Datos obtenidos de la Base de Datos 'olxMsgDatabase' extraída de los siguientes elementos:</h2>
+    <h2 style="text-align: left;">
+        {% for elto in caseinfo.elemento%}
+        <li>
+            <a href="{{elto}}\publicated-items.html" target="iframe_principal" style="text-decoration: none;">{{elto}}</a>
+        </li>
+        {% endfor %}
+    </h2>
+</div>
+</body>
+</html>

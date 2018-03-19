@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="utf-8"/>
+    <title>Informe Técnico/Pericial Nº: %valueInforme - GABINETE CIENTIFICO JUDICIAL</title>
+    <link rel="stylesheet" type="text/css" href="resource/myStyle.css">
+</head>
+<body >
+<div align="center">
+    <h3>{{elto}} - Publicaciones en donde se establecieron conversaciones.</h3>
+    <p class="info">Formato: TITULO_PUBLICACION - ID_PUBLICACION - INTERESADO <> VENDEDOR</p>
+    <div style="width: 800px; ">
+        <ol type="1">
+            {% for itm in index %}
+            <li>
+                <p align="left">Publicación:  <a href="{{itm.url}}">{{itm.id}}</a></p>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+</body>
+</html>

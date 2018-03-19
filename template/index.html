@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head >
+    <meta charset="utf-8"/>
+    <title>Informe Técnico/Pericial Nº: {{caseinfo.informe}} - {{caseinfo.oficina}}</title>
+    <link rel="stylesheet" type="text/css" href="resource/myStyle.css">
+
+<body>
+
+<header style="background-color: lightblue;">
+    <table align="center">
+        <tr>
+            <td>
+                <div align="center" id="CaseData" style="width: 300px;">
+                    <p class="headerstyle">Informe Técnico/Pericial Nº: {{caseinfo.informe}}</p>
+                    <p class="headerstyle">Causa: {{caseinfo.causa}}</p>
+                    <p class="headerstyle">Expediente: {{caseinfo.expte}}</p>
+                    <p class="headerstyle">Perito: {{caseinfo.perito}}</p>
+                </div>
+            </td>
+            <td>
+                <div align="center" style="width: 100%;">
+                    <img src="resource\logo.png"  align="middle">
+                    <h1>{{caseinfo.oficina}}</h1>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+</header>
+<nav style="font-size: 25px; text-align: center; background-color: lightblue; height: 60px; ">
+    <a href="case-info.html" target="iframe_principal" style="text-decoration: none;">Información</a>
+    {% for elemento in caseinfo.elemento %}
+    <a href="{{elemento}}\publicated-items.html" target="iframe_principal" style="text-decoration: none;"> | {{elemento}} </a>
+    {% endfor %}
+</nav>
+<article>
+    <iframe name="iframe_principal" src="case-info.html" height="800" width="100%" style="border:none; min-width: 850px;">
+    </iframe>
+</article>
+<footer style="background-color: lightblue;">
+    <h2>{{caseinfo.contacto}}</h2>
+</footer>
+</body>
+</html>

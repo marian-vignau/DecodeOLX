@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Informe Técnico/Pericial Nº: %valueInforme - GABINETE CIENTIFICO JUDICIAL</title>
+    <link rel="stylesheet" type="text/css" href="..\resource\myStyle.css">
+</head>
+<body>
+
+<div align="center">
+    <a href="publicated-items.html" target="iframe_principal" style="font-size: 18px; text-align: center; text-decoration: none;">Volver a las publicaciones</a>
+</div>
+<div align="center">
+    <p class="separator">Detalles de la publicación</p>
+    <table class="item">
+        <tr >
+            <th class="item">Título:</th>
+            <th class="item">{{item.title}}</th>
+        </tr>
+        <tr >
+            <th class="item">Descripción:</th>
+            <th class="item">{{item.description}}</th>
+        </tr>
+        <tr >
+            <th class="item">Fecha:</th>
+            <th class="item">{{item.date.timestamp}}</th>
+        </tr>
+        <tr >
+            <th class="item">Imágenes:</th>
+            <th class="item">
+                <ul type="">
+                    {% for img in item.images %}
+                    <li>
+                        <table class="user">
+                            <tr>
+                                <td class="user">
+                                    <a href="{{img.url}}" title="{{img.url}}" target="_blank"> <img src="{{img.thumbnail}}" /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="user">
+                                    <a href="{{img.url}}" title="{{img.url}}" target="_blank">{{img.url}}</a>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+            </th>
+        </tr>
+        <tr >
+            <th class="item">Ubicación (Lat/Long):</th>
+            <th class="item">
+                <a href="https://www.google.com/maps/place/{{item.coordinates.latitude}},{{item.coordinates.longitude}}" target="_blank">
+                    {{item.coordinates.latitude}},{{item.coordinates.longitude}}
+                </a>
+            </th>
+        </tr>
+        <tr >
+            <th class="item">Teléfono:</th>
+            <th class="item">{{item.phone}}</th>
+        </tr>
+        <tr >
+            <th class="item">Precio:</th>
+            <th class="item">{% if item.price and item.price.displayPrice %}
+                {{item.price.displayPrice}} {% endif %}</th>
+        </tr>
+        <tr >
+            <th class="item">ID:</th>
+            <th class="item">{{item.id}}</th>
+        </tr>
+        <tr >
+            <th class="item">URL:</th>
+            <th class="item"><a href="{{item.slug}}">{{item.slug}}</a></th>
+        </tr>
+        <tr >
+            <th class="item">Datos del Vendedor:</th>
+            <th class="item">
+                <table class="user">
+                    <tr>
+                        <th class="user">ID:</th>
+                        <th class="user">{{item.user.id}}</th>
+                    </tr>
+                    <tr>
+                        <th class="user">Nombre de Usuario:</th>
+                        <th class="user">{{item.user.username}}</th>
+                    </tr>
+                    <tr>
+                        <th class="user">Nombre Público:</th>
+                        <th class="user">{{item.user.publicName}}</th>
+                    </tr>
+                    <tr>
+                        <th class="user">Dirección:</th>
+                        <th class="user">{{item.user.address}}</th>
+                    </tr>
+                    <tr>
+                        <th class="user">Ubicación (Lat/Long):</th>
+                        <th class="user"><a href="https://www.google.com/maps/place/{{item.user.latitude}},{{item.user.longitude}}" target="_blank">
+                            {{item.user.latitude}},{{item.user.longitude}}</a>
+                        </th>
+                    </tr>
+                </table>
+        </tr>
+    </table>
+</div>
+<div >
+    <p class="separator">Participantes</p>
+    <ol type="1">
+        {% for sen in senders %}
+        <li>
+            <table class="message" width="100%">
+                <tr>
+                    <th class="message" width="100px">ID:</th>
+                    <th class="message">{{sen.userId}}</th>
+                </tr>
+                <tr>
+                    <th class="message" width="100px">Nombre:</th>
+                    <th class="message">{{sen.name}}</th>
+                </tr>
+                <tr>
+                    <th class="message" width="100px">Es Mío:</th>
+                    <th class="message">{{sen.isMine}}</th>
+                </tr>
+            </table>
+        </li>
+        {% endfor %}
+    </ol>
+    <p class="separator">Conversación</p>
+    <ol type="1">
+        {% for msg in messages %}
+        <li>
+            <table class="message" width="100%";>
+                <tr>
+                    <th class="message" width="100px"><b>Texto:</b></th>
+                    <th class="message"><b>{{msg.text}}</b></th>
+                </tr>
+                <tr>
+                    <th class="message" width="100px">Fecha:</th>
+                    <th class="message">{{ msg.date }}</th>
+                </tr>
+                <tr>
+                    <th class="message" width="100px">Es Mío:</th>
+                    <th class="message">{{msg.isMine}}</th>
+                </tr>
+                <tr>
+                    <th class="message" width="100px">Se Envió:</th>
+                    <th class="message">{{msg.isSent}}</th>
+                </tr>
+            </table>
+        </li>
+        {% endfor %}
+    </ol>
+</div>
+</body>
+</html>
